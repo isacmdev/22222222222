@@ -18,8 +18,8 @@ public class ProductInventory {
     private String name;
     private String category;
     private String technicalDescription;
-    private Boolean available;
     private List<String> images;
+    private Integer stock;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }

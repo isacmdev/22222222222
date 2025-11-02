@@ -1,5 +1,6 @@
 package com.example.demo2.infrastructure.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,9 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductInventoryRequestDto {
+
+    @JsonProperty("name")
     private String name;
+
+    @JsonProperty("category")
     private String category;
+
+    @JsonProperty("technicalDescription")
     private String technicalDescription;
-    private Boolean available;
+
+    @JsonProperty("images")
     private List<String> images;
+
+    @JsonProperty("stock")
+    private Integer stock;
 }
