@@ -2,6 +2,7 @@ package com.example.demo2.infrastructure.controller;
 
 import com.example.demo2.domain.entity.ProductInventory;
 import com.example.demo2.domain.port.in.ProductInventoryInterfacePortIn;
+import com.example.demo2.infrastructure.dto.InventoryStockRespopnseDto;
 import com.example.demo2.infrastructure.dto.ProductInventoryRequestDto;
 import com.example.demo2.infrastructure.dto.ProductInventoryResponseDto;
 import com.example.demo2.infrastructure.dto.StockUpdateRequestDto;
@@ -70,5 +71,11 @@ public class ProductController {
     ) {
         ProductInventory updated = productService.removeStock(id, requestDto.getQuantity());
         return ResponseEntity.ok(ProductInventoryMapperDto.toResponse(updated));
+    }
+
+    @GetMapping("/internal-code/{internalCode}")
+    public ResponseEntity<InventoryStockRespopnseDto> findByInternalCode(@PathVariable String internalCode) {
+        ProductInventory product = productService.getByInternalCode(internalCode);
+        return ResponseEntity.ok(ProductInventoryMapperDto.toInventoryResponseDto(product));
     }
 }

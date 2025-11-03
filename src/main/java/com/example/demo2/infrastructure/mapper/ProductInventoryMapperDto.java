@@ -1,6 +1,7 @@
 package com.example.demo2.infrastructure.mapper;
 
 import com.example.demo2.domain.entity.ProductInventory;
+import com.example.demo2.infrastructure.dto.InventoryStockRespopnseDto;
 import com.example.demo2.infrastructure.dto.ProductInventoryRequestDto;
 import com.example.demo2.infrastructure.dto.ProductInventoryResponseDto;
 
@@ -49,5 +50,15 @@ public class ProductInventoryMapperDto {
         return entities.stream()
                 .map(ProductInventoryMapperDto::toResponse)
                 .toList();
+    }
+
+    public static InventoryStockRespopnseDto toInventoryResponseDto(ProductInventory productInventory) {
+        if (productInventory == null) return null;
+
+        return InventoryStockRespopnseDto.builder()
+                .id(productInventory.getId())
+                .internalCode(productInventory.getInternalCode())
+                .stock(productInventory.getStock())
+                .build();
     }
 }

@@ -93,4 +93,10 @@ public class ProductInventoryRepository implements ProductInventoryInterfacePort
         ProductInventoryEntity updated = productInventoryJpa.save(existing);
         return ProductInventoryEntityMapper.toDomain(updated);
     }
+
+    @Override
+    public ProductInventory findByInternalCode(String internalCode) {
+        Optional<ProductInventoryEntity> entity = productInventoryJpa.findByInternalCode(internalCode);
+        return entity.map(ProductInventoryEntityMapper::toDomain).orElse(null);
+    }
 }

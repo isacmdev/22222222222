@@ -13,4 +13,5 @@ public interface ProductInventoryInterfacePortIn {
     void deleteProduct(Long id);
     ProductInventory addStock(Long id, int quantity);
     ProductInventory removeStock(Long id, int quantity);
+    ProductInventory getByInternalCode(String internalCode);
 }

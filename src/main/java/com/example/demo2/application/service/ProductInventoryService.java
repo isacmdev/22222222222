@@ -53,4 +53,10 @@ public class ProductInventoryService implements ProductInventoryInterfacePortIn 
         }
         return productInventoryInterfacePortOut.removeStock(id, quantity);
     }
+
+    @Override
+    public ProductInventory getByInternalCode(String internalCode) {
+        System.out.println("Service Layer: Fetching product with internal code: " + internalCode);
+        return productInventoryInterfacePortOut.findByInternalCode(internalCode);
+    }
 }
